@@ -144,8 +144,18 @@ const showDetails = (product) => {
 
 btns.forEach(btn => {
     btn.addEventListener('click', () => {
-        console.log(btn.name);
-        filteredData(btn.name)
+        if (btn.classList.contains('active')) {
+            return;
+        } else {
+            let siblings = btn.parentElement.children;
+            console.log(siblings);
+            for (let i = 0; i < siblings.length; i++) {
+                siblings[i].classList.remove('active');
+            }
+            btn.classList.add('active');
+
+        }
+        filteredData(btn.name);
     })
 })
 
